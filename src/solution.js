@@ -66,8 +66,10 @@ const findBySex = function (students, sex) {};
 // return []
 const getAverageinScoreRange = function (students, min, max) {};
 
-// készits olyan függvényt amivel egy megadott pont intervallumban es megadott nem szerint szüri a diákokat
-// pl.: 25-46 között, lányok
+// készits olyan függvényt amivel egy megadott pont intervallumban
+// es megadott nem szerint szüri a diákokat
+// es a megadott tulajdonsagot (property) adja vissza
+// pl.: 25-46 között, lányok, nev
 const findPropInScoreRangeBySex = function (students, min, max, sex) {};
 
 module.exports = {
