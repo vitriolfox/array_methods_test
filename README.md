@@ -14,6 +14,8 @@ Az alábbi feladatban informatika érettségizők adatai alapján kell különb�
 
 [every](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every)
 
+[find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find)
+
 ## Érettségi ponthatárok:
 
 * 80-100  *Jeles*

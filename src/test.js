@@ -37,7 +37,7 @@ test('kapott-e valaki 10-nél kevesebb pontot', t => {
   const result = solution.isAnyoneBelow10(students);
 
   t.is(result, true);
-})
+});
 
 test('tanulók átlagpontszáma', t => {
   const result = solution.averageScore(students);

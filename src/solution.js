@@ -21,6 +21,7 @@ const studentsWithA = function (students) {};
 const earlyGraduate = function (students) {};
 
 // kapott-e valaki 10-nél kevesebb pontot?
+// return Boolean
 const isAnyoneBelow10 = function (students) {};
 
 // LEVEL 2
