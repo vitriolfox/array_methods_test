@@ -33,6 +33,12 @@ test('előrehozott érettségizők', t => {
   t.is(result.length, 2);
 });
 
+test('kapott-e valaki 10-nél kevesebb pontot', t => {
+  const result = solution.isAnyoneBelow10(students);
+
+  t.is(result, true);
+})
+
 test('tanulók átlagpontszáma', t => {
   const result = solution.averageScore(students);
 
@@ -79,4 +85,17 @@ test('diákok listázása nem alapján', t => {
   const result = solution.findBySex(students, 'male');
 
   t.is(result.length, 10);
+});
+
+test('diákok átlaga a megadott pontintervallumban', t => {
+  const result = solution.getAverageinScoreRange(students, 25, 44);
+
+  t.is(result, 36);
+});
+
+test('diákok listája megadott pontszámok között nem alapján', t => {
+  const result = solution.findPropInScoreRangeBySex(students, 25, 46, 'female', 'name');
+
+  t.is(result.length, 4);
+  t.is(result[0], 'Klára');
 });

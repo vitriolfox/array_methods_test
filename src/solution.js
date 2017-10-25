@@ -20,6 +20,9 @@ const studentsWithA = function (students) {};
 // return []
 const earlyGraduate = function (students) {};
 
+// kapott-e valaki 10-nél kevesebb pontot?
+const isAnyoneBelow10 = function (students) {};
+
 // LEVEL 2
 
 // tanulók átlagpontszáma
@@ -58,12 +61,21 @@ const findInScoreRange = function (students, min, max) {};
 // return []
 const findBySex = function (students, sex) {};
 
+// készits olyan függvényt ami egy adott pont intervallumban visszatér a diákok átlagával
+// return []
+const getAverageinScoreRange = function (students, min, max) {};
+
+// készits olyan függvényt amivel egy megadott pont intervallumban es megadott nem szerint szüri a diákokat
+// pl.: 25-46 között, lányok
+const findPropInScoreRangeBySex = function (students, min, max, sex) {};
+
 module.exports = {
   nameList,
   didEveryOnePass,
   studentsWithA,
   failedStudents,
   earlyGraduate,
+  isAnyoneBelow10,
   averageScore,
   averageFemaleScore,
   aboveAverageStudents,
@@ -71,5 +83,7 @@ module.exports = {
   worstStudent,
   findByName,
   findInScoreRange,
-  findBySex
+  findBySex,
+  getAverageinScoreRange,
+  findPropInScoreRangeBySex
 };
