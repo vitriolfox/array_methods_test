@@ -28,6 +28,13 @@ Az alábbi feladatban informatika érettségizők adatai alapján kell különb�
 
 Az érettségizők életkora 18 év, de vannak *előrehozott érettségizők* is, akik fiatalabbak.
 
+### Szintek
+
+3 szintre vannak osztva a feladatok:
+
+* első szint az eddig tanult tömb metódusokkal megoldható
+* a második szinthez reduce-al kellene megoldani
+* a harmadikban pedig általánosan használható függvényeket kell irni
 
 ## Tesztek
 
