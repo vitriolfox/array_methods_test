@@ -1,30 +1,12 @@
 const test = require('ava');
 const students = require('./students');
-const solution = require('./index');
+const solution = require('./solution');
 
 test('tanulók névsora', t => {
   const result = solution.nameList(students);
 
   t.is(result.length, 20);
   t.is(result[0], 'Tamás');
-});
-
-test('tanulók átlagpontszáma', t => {
-  const result = solution.averageScore(students);
-
-  t.is(result, 61.45);
-});
-
-test('lány tanulók átlaga', t => {
-  const result = solution.averageFemaleScore(students);
-
-  t.is(result, 54.1);
-});
-
-test('átlag felett teljesitők listája', t => {
-  const result = solution.aboveAverageStudents(students);
-
-  t.is(result.length, 12);
 });
 
 test('átment-e mindenki a teszten?', t => {
@@ -49,6 +31,24 @@ test('előrehozott érettségizők', t => {
   const result = solution.earlyGraduate(students);
 
   t.is(result.length, 2);
+});
+
+test('tanulók átlagpontszáma', t => {
+  const result = solution.averageScore(students);
+
+  t.is(result, 61.45);
+});
+
+test('lány tanulók átlaga', t => {
+  const result = solution.averageFemaleScore(students);
+
+  t.is(result, 54.1);
+});
+
+test('átlag felett teljesitők listája', t => {
+  const result = solution.aboveAverageStudents(students);
+
+  t.is(result.length, 12);
 });
 
 test('legjobb diák', t => {

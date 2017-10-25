@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "ava test.js",
-    "test-nyan": "ava --tap | tap-nyan test.js"
+    "test": "ava src/test.js",
+    "test-nyan": "ava --tap | tap-nyan src/test.js"
   },
   "keywords": [],
   "author": "",
