@@ -2,49 +2,95 @@
 
 // tanulók névsora
 // return []
-const nameList = function (students) {};
+const nameList = function (students) {
+  return students.map(function (student) { return student.name; });
+};
 
 // átment-e mindenki a teszten?
 // return Boolean
-const didEveryOnePass = function (students) {};
+const didEveryOnePass = function (students) {
+  return students.every(function (student) { return student.score >= 25; });
+};
 
 // bukott diákok listája
 // return []
-const failedStudents = function (students) {};
+const failedStudents = function (students) {
+  return students.filter(function (student) { return student.score < 25; });
+};
 
 // hányan kaptak jeles értékelést?
 // return []
-const studentsWithA = function (students) {};
+const studentsWithA = function (students) {
+  let bestStudents = students.filter(function (student) { return student.score > 79; });
+  let numberOfBestStudents = 0;
+  for (let i = 0; i < bestStudents.length; i++) { numberOfBestStudents++; }
+  return numberOfBestStudents;
+};
 
 // előrehozott érettségizők
 // return []
-const earlyGraduate = function (students) {};
+const earlyGraduate = function (students) {
+  return students.filter(function (student) { return student.age < 18; });
+};
 
 // kapott-e valaki 10-nél kevesebb pontot?
 // return Boolean
-const isAnyoneBelow10 = function (students) {};
+const isAnyoneBelow10 = function (students) {
+  return students.some(function (student) { return student.score > 10; });
+};
 
 // LEVEL 2
 
 // tanulók átlagpontszáma
 // return Number
-const averageScore = function (students) {};
+const averageScore = function (students) {
+  let studentsScores = students.map(function (student) { return student.score; });
+  let sumScores = studentsScores.reduce(function (accumulator, currentValue) {
+    return accumulator + currentValue;
+  });
+  return sumScores / studentsScores.length;
+};
 
 // lány tanulók átlaga
 // return Number
-const averageFemaleScore = function (students) {};
+const averageFemaleScore = function (students) {
+  let femaleStudents = students.filter(function (student) { return student.sex === 'female'; });
+  let femaleStudentsScores = femaleStudents.map(function (femaleStudent) { return femaleStudent.score; });
+  let femaleSumScores = femaleStudentsScores.reduce(function (accumulator, currentValue) {
+    return accumulator + currentValue;
+  });
+  return femaleSumScores / femaleStudentsScores.length;
+};
 
 // átlag felett teljesitők listája
 // return []
-const aboveAverageStudents = function (students) {};
+const aboveAverageStudents = function (students) {
+  let studentsScores = students.map(function (student) { return student.score; });
+  let sumScores = studentsScores.reduce(function (accumulator, currentValue) { return accumulator + currentValue; });
+  let averageScoreForThisFuction = sumScores / studentsScores.length;
+  let aboveAverageList = students.filter(function (student) { return student.score > averageScoreForThisFuction; });
+  return aboveAverageList.map(function (student) { return student.name; });
+};
 
 // legtöbb pontszámot elért tanuló
 // return {}
-const bestStudent = function (students) {};
+const bestStudent = function (students) {
+  let studentsScores = students.map(function (student) { return student.score; });
+  let maxScore = studentsScores.reduce(function (a, b) {
+    return Math.max(a, b);
+  });
+  return students.filter(function (student) { return student.score === maxScore; })[0];
+};
 
 // legkevesebb pontszámot elért
 // return {}
-const worstStudent = function (students) {};
+const worstStudent = function (students) {
+  let studentsScores = students.map(function (student) { return student.score; });
+  let minScore = studentsScores.reduce(function (a, b) {
+    return Math.min(a, b);
+  });
+  return students.filter(function (student) { return student.score === minScore; })[0];
+};
 
 // LEVEL 3
 
