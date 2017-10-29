@@ -56,9 +56,7 @@ const averageScore = function (students) {
 const averageFemaleScore = function (students) {
   let femaleStudents = students.filter(function (student) { return student.sex === 'female'; });
   let femaleStudentsScores = femaleStudents.map(function (femaleStudent) { return femaleStudent.score; });
-  let femaleSumScores = femaleStudentsScores.reduce(function (accumulator, currentValue) {
-    return accumulator + currentValue;
-  });
+  let femaleSumScores = femaleStudentsScores.reduce(function (accumulator, currentValue) { return accumulator + currentValue; });
   return femaleSumScores / femaleStudentsScores.length;
 };
 
@@ -76,9 +74,7 @@ const aboveAverageStudents = function (students) {
 // return {}
 const bestStudent = function (students) {
   let studentsScores = students.map(function (student) { return student.score; });
-  let maxScore = studentsScores.reduce(function (a, b) {
-    return Math.max(a, b);
-  });
+  let maxScore = studentsScores.reduce(function (a, b) { return Math.max(a, b); });
   return students.filter(function (student) { return student.score === maxScore; })[0];
 };
 
@@ -97,26 +93,40 @@ const worstStudent = function (students) {
 // készits olyan függvényt amivel név alapján lehet tanulót kikeresni egy tömbből
 // csak egy tanulóval térjen vissza a függvény
 // return {}
-const findByName = function (students, name) {};
+const findByName = function (students, name) {
+  return students.find(function (student) { return student.name === name; });
+};
 
 // készits olyan függvényt amivel egy megadott pont intervallumban lévő diákokkal tér vissza
 // pl.: 25-46 között
 // return []
-const findInScoreRange = function (students, min, max) {};
+const findInScoreRange = function (students, min, max) {
+  return students.filter(function (student) { return student.score <= max && student.score >= min; });
+};
 
 // készits olyan függvényt amivel nem szerint lekérheted a tanulók listáját
 // return []
-const findBySex = function (students, sex) {};
+const findBySex = function (students, sex) {
+  return students.filter(function (student) { return student.sex === sex; });
+};
 
 // készits olyan függvényt ami egy adott pont intervallumban visszatér a diákok átlagával
 // return []
-const getAverageinScoreRange = function (students, min, max) {};
+const getAverageinScoreRange = function (students, min, max) {
+  let studentsScores = students.map(function (student) { return student.score; });
+  let filteredScores = studentsScores.filter(function (score) { return score <= max && score >= min; });
+  return filteredScores.reduce(function (accumulator, currentValue) { return accumulator + currentValue; }) / filteredScores.length;
+};
 
 // készits olyan függvényt amivel egy megadott pont intervallumban
 // es megadott nem szerint szüri a diákokat
 // es a megadott tulajdonsagot (property) adja vissza
 // pl.: 25-46 között, lányok, nev
-const findPropInScoreRangeBySex = function (students, min, max, sex) {};
+const findPropInScoreRangeBySex = function (students, min, max, sex) {
+  let filteredByScores = students.filter(function (student) { return student.score <= max && student.score >= min; });
+  let filteredBySex = filteredByScores.filter(function (student) { return student.sex === sex; });
+  return filteredBySex.map(function (student) { return student.name; });
+};
 
 module.exports = {
   nameList,
