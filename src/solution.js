@@ -21,8 +21,7 @@ const failedStudents = function (students) {
 // hányan kaptak jeles értékelést?
 // return []
 const studentsWithA = function (students) {
-  let bestStudents = students.filter(function (student) { return student.score > 79; });
-  return bestStudents.length;
+  return students.filter(function (student) { return student.score > 79; }).length;
 };
 
 // előrehozott érettségizők
@@ -42,18 +41,17 @@ const isAnyoneBelow10 = function (students) {
 // tanulók átlagpontszáma
 // return Number
 const averageScore = function (students) {
-  let studentsScores = students.map(function (student) { return student.score; });
-  let sumScores = studentsScores.reduce(function (accumulator, currentValue) {
-    return accumulator + currentValue;
-  });
-  return sumScores / studentsScores.length;
+  let sumScores = students.reduce(function (accumulator, student) { return accumulator + student.score; }, 0);
+  return sumScores / students.length;
 };
 
 // lány tanulók átlaga
 // return Number
 const averageFemaleScore = function (students) {
-  let femaleStudentsScores = students.filter(function (student) { return student.sex === 'female'; })
-  .map(function (femaleStudent) { return femaleStudent.score; });
+  let femaleStudentsScores = students
+    .filter(function (student) { return student.sex === 'female'; })
+    .map(function (femaleStudent) { return femaleStudent.score; });
+
   let femaleSumScores = femaleStudentsScores.reduce(function (accumulator, currentValue) { return accumulator + currentValue; });
   return femaleSumScores / femaleStudentsScores.length;
 };
@@ -61,29 +59,28 @@ const averageFemaleScore = function (students) {
 // átlag felett teljesitők listája
 // return []
 const aboveAverageStudents = function (students) {
-  let studentsScores = students.map(function (student) { return student.score; });
-  let sumScores = studentsScores.reduce(function (accumulator, currentValue) { return accumulator + currentValue; });
-  let averageScoreForThisFuction = sumScores / studentsScores.length;
-  let aboveAverageList = students.filter(function (student) { return student.score > averageScoreForThisFuction; });
-  return aboveAverageList.map(function (student) { return student.name; });
+  let averageScoreForThisFuction = averageScore(students);
+  return students
+    .filter(function (student) { return student.score > averageScoreForThisFuction; })
+    .map(function (student) { return student.name; });
 };
 
 // legtöbb pontszámot elért tanuló
 // return {}
 const bestStudent = function (students) {
-  let maxScore = students.map(function (student) { return student.score; })
-  .reduce(function (a, b) { return Math.max(a, b); });
-  return students.filter(function (student) { return student.score === maxScore; })[0];
+  let maxScore = students
+    .map(function (student) { return student.score; })
+    .reduce(function (a, b) { return Math.max(a, b); });
+  return students.find(function (student) { return student.score === maxScore; });
 };
 
 // legkevesebb pontszámot elért
 // return {}
 const worstStudent = function (students) {
-  let minScore = students.map(function (student) { return student.score; })
-    .reduce(function (a, b) {
-      return Math.min(a, b);
-    });
-  return students.filter(function (student) { return student.score === minScore; })[0];
+  let minScore = students
+      .map(function (student) { return student.score; })
+      .reduce(function (a, b) { return Math.min(a, b); });
+  return students.find(function (student) { return student.score === minScore; });
 };
 
 // LEVEL 3
@@ -111,9 +108,9 @@ const findBySex = function (students, sex) {
 // készits olyan függvényt ami egy adott pont intervallumban visszatér a diákok átlagával
 // return []
 const getAverageinScoreRange = function (students, min, max) {
-  let filteredScores = students.map(function (student) { return student.score; })
-  .filter(function (score) { return score <= max && score >= min; });
-  return filteredScores.reduce(function (accumulator, currentValue) { return accumulator + currentValue; }) / filteredScores.length;
+  let filteredScores = students
+  .filter(function (student) { return student.score <= max && student.score >= min; });
+  return filteredScores.reduce(function (accumulator, student) { return accumulator + student.score; }, 0) / filteredScores.length;
 };
 
 // készits olyan függvényt amivel egy megadott pont intervallumban
@@ -121,9 +118,10 @@ const getAverageinScoreRange = function (students, min, max) {
 // es a megadott tulajdonsagot (property) adja vissza
 // pl.: 25-46 között, lányok, nev
 const findPropInScoreRangeBySex = function (students, min, max, sex) {
-  let filteredBySex = students.filter(function (student) { return student.score <= max && student.score >= min; })
-  .filter(function (student) { return student.sex === sex; });
-  return filteredBySex.map(function (student) { return student.name; });
+  return students
+    .filter(function (student) { return student.score <= max && student.score >= min; })
+    .filter(function (student) { return student.sex === sex; })
+    .map(function (student) { return student.name; });
 };
 
 module.exports = {
